@@ -1,3 +1,4 @@
+import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 interface Evaluate<T> {
@@ -27,6 +28,13 @@ public class TestPredicate {
 
         boolean result2 = check(-5, predicate);
         System.out.println("Result 2 is: " + result2);
+
+        // Predicates can be used in-line:
+        int x = 4;
+        System.out.println("Is " + x + " even? " + check(x, n -> n % 2 == 0));
+
+        String name = "Mr. Ian McNicholas";
+        System.out.println("Does the name " + name + " start with Mr? " + check(name, n -> name.startsWith("Mr")));
 
     }
     public static <T> boolean check(T t, Predicate<T> lambdaFunction){
