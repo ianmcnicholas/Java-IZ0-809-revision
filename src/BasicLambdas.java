@@ -16,15 +16,15 @@ public class BasicLambdas {
                 System.out.println("I::m");
             }
         };
-        i.m();
+        i.m(); // I::m
 
         // Java 8 - Lambda expression
         I lambdaI1 = () -> { // the () can be thought of as pointing at public void m();
             System.out.println("LambdaI1 version");
         };
         I lambdaI2 = () -> System.out.println("LambdaI2 version");
-        lambdaI1.m();
-        lambdaI2.m();
+        lambdaI1.m(); // LambdaI1 version
+        lambdaI2.m(); // LambdaI2 version
     }
 
 }
