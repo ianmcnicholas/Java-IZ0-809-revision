@@ -1,7 +1,7 @@
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class Functions {
+public class Functions { // the final Type is the output type.
     public static void main(String[] args) {
         // A Function can take an input and output the same or a different type
         // Function<T, R>; R apply(T t)
