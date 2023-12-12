@@ -1,14 +1,12 @@
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.function.*;
 
 public class MethodReferences {
     public static void main(String[] args) {
 //        boundMethodReferences();
 //        unboundMethodReferences();
-        staticdMethodReferences();
+//        static MethodReferences();
+        constructorMethodReferences();
     }
 
     public static void boundMethodReferences() { // for compile time arguments
@@ -54,7 +52,7 @@ public class MethodReferences {
         System.out.println(concatMR.apply("Here and ", "there."));
     }
 
-    public static void staticdMethodReferences() {
+    public static void staticMethodReferences() {
         // also considered to be UN-BOUND
         Consumer<List<Integer>> sortL = list -> Collections.sort(list);
         Consumer<List<Integer>> sortMR = Collections::sort;
@@ -66,6 +64,31 @@ public class MethodReferences {
         listOfNumbers = Arrays.asList(3, 1, 7, 4, 8);
         sortMR.accept(listOfNumbers);
         System.out.println(listOfNumbers);
+    }
+
+    public static void constructorMethodReferences(){
+        // Supplier<T>
+        //    T get()
+        Supplier<StringBuilder> sbL = () -> new StringBuilder();
+        Supplier<StringBuilder> sbMR = StringBuilder::new;
+        StringBuilder sb1 = sbL.get(); sb1.append("lambda version");
+        System.out.println(sb1);
+        StringBuilder sb2 = sbMR.get(); sb2.append("method reference version");
+        System.out.println(sb2);
+
+        // Function<T, R>
+        //    R apply(T t)
+        //      List<String> apply(Integer)
+        //  ArrayList(int initialCapacity)
+        Function<Integer, List<String>> alL = x -> new ArrayList(x);
+        Function<Integer, List<String>> alMR = ArrayList::new;
+        List<String> ls1 = alL.apply(10); // size 10
+        ls1.add("21");
+        System.out.println(ls1);
+
+        List<String> ls2 = alMR.apply(5); // size 5
+        ls2.add("88");
+        System.out.println(ls2);
 
     }
 }
