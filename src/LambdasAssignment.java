@@ -19,16 +19,21 @@ public class LambdasAssignment {
         consLb.accept("lambda String");
         consMR.accept("MR String");
     }
+
     private static void supplier() {
-        Retrievable<Integer> retriever = () -> {return 77;};
+        Retrievable<Integer> retriever = () -> {
+            return 77;
+        };
         retriever.get();
         System.out.println(retriever.get());
 
-        Supplier<Integer> supLb = () -> {return 77;};
+        Supplier<Integer> supLb = () -> {
+            return 77;
+        };
         System.out.println(supLb.get() + " is the lambda");
     }
 
-    private static void predicate(){
+    private static void predicate() {
         Evaluate<Integer> eval = i -> i < 0;
         System.out.println(eval.test(-1));
         System.out.println(eval.test(1));
@@ -46,7 +51,7 @@ public class LambdasAssignment {
         System.out.println(check(new Person("Rosa", 7, 0.95), p -> p.age >= 18));
     }
 
-    private static <T> boolean check(T t, Predicate<T> function){
+    private static <T> boolean check(T t, Predicate<T> function) {
         return function.test(t);
     }
 }
@@ -58,7 +63,8 @@ interface Printable<T> {
 interface Retrievable<T> {
     T get();
 }
-interface Evaluate<T>{
+
+interface Evaluate<T> {
     boolean test(T t);
 }
 
