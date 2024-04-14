@@ -6,16 +6,13 @@ public class FizzBuzz {
         fizzbuzz(15);
     }
 
-    private static void fizzbuzz(int num) {
-
+    public static String fizzbuzz(int num) {
         if (num % 3 == 0) {
-            System.out.println((num % 5 == 0 ? "Fizzbuzz" : "Fizz"));
+            return (num % 5 == 0 ? "Fizzbuzz" : "Fizz");
         } else if (num % 5 == 0) {
-            System.out.println("Buzz");
+             return ("Buzz");
         } else {
-            System.out.println(num);
+            return String.valueOf(num);
         }
-
-
     }
 }
